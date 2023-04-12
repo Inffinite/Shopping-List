@@ -19,6 +19,12 @@ var hNormalText = TextStyle(
   fontSize: 18.0,
 );
 
+var hNormalTextSmall = TextStyle(
+  color: creamLight.withOpacity(0.4),
+  fontFamily: "SFNSR",
+  fontSize: 12.0,
+);
+
 var hNormalDarkText = TextStyle(
   color: blackDark,
   fontFamily: "SFNSR",
@@ -27,6 +33,12 @@ var hNormalDarkText = TextStyle(
 
 var hSubtitleText = TextStyle(
   color: creamLight.withOpacity(0.6),
+  fontFamily: "AR",
+  fontSize: 14.0,
+);
+
+var hSmallTitleText = TextStyle(
+  color: creamLight.withOpacity(0.3),
   fontFamily: "AR",
   fontSize: 14.0,
 );

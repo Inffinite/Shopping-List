@@ -130,9 +130,165 @@ class _SettingsState extends State<Settings> {
                 ],
               ),
             ),
+            SizedBox(height: 25.0),
+            Container(
+              width: double.infinity,
+              child: Text(
+                "Support",
+                textAlign: TextAlign.start,
+                style: hSmallTitleText,
+              ),
+            ),
+            SizedBox(height: 15.0),
+            Container(
+              padding: EdgeInsets.all(0.0),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: darkLighter,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                children: [
+                  SettingsTab(
+                    name: "Report a problem",
+                    info: "Tell us about issues with the app",
+                    icon: CupertinoIcons.chevron_right,
+                    dividerStatus: true,
+                  ),
+                  SettingsTab(
+                    name: "Feedback",
+                    info: "Send us your thoughts and ideas",
+                    icon: CupertinoIcons.chevron_right,
+                    dividerStatus: false,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 25.0),
+            Container(
+              width: double.infinity,
+              child: Text(
+                "App",
+                textAlign: TextAlign.start,
+                style: hSmallTitleText,
+              ),
+            ),
+            SizedBox(height: 15.0),
+            Container(
+              padding: EdgeInsets.all(0.0),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: darkLighter,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                children: [
+                  SettingsTab(
+                    name: "Rate us",
+                    info: "Rate us to unlock a hidden feature.",
+                    icon: CupertinoIcons.chevron_right,
+                    dividerStatus: true,
+                  ),
+                  SettingsTab(
+                    name: "Privacy",
+                    info: "How do we handle your data",
+                    icon: CupertinoIcons.chevron_right,
+                    dividerStatus: false,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class SettingsTab extends StatefulWidget {
+  final String name;
+  final IconData icon;
+  final bool dividerStatus;
+  final String info;
+
+  SettingsTab({
+    required this.name,
+    required this.icon,
+    required this.dividerStatus,
+    required this.info,
+  });
+
+  @override
+  State<SettingsTab> createState() => _SettingsTabState();
+}
+
+class _SettingsTabState extends State<SettingsTab> {
+  var paddingTop = 15.0;
+
+  var paddingBottom = 5.0;
+
+  calculatePadding() {
+    if (widget.dividerStatus == true) {
+      paddingTop = 20.0;
+      paddingBottom = 10.0;
+    } else {
+      paddingTop = 10.0;
+      paddingBottom = 20.0;
+    }
+  }
+
+  @override
+  void initState() {
+    calculatePadding();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+            left: 15.0,
+            right: 15.0,
+            top: paddingTop,
+            bottom: paddingBottom,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.name,
+                    style: hNormalText,
+                  ),
+                  SizedBox(height: 5.0),
+                  Text(
+                    widget.info,
+                    style: hNormalTextSmall,
+                  ),
+                ],
+              ),
+              Icon(
+                widget.icon,
+                size: 20.0,
+                color: creamLight.withOpacity(0.6),
+              ),
+            ],
+          ),
+        ),
+        widget.dividerStatus == true
+            ? Divider(
+                color: creamLight.withOpacity(0.2),
+                endIndent: 0.0,
+                indent: 0.0,
+              )
+            : Container(),
+      ],
     );
   }
 }
