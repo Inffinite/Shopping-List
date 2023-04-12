@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:shlop/constants/colors.dart';
 import 'package:shlop/constants/textStyling.dart';
+import 'package:shlop/screens/Settings.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -191,29 +192,39 @@ class _DashboardState extends State<Dashboard> {
                           ],
                         ),
                         SizedBox(width: 120.0),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(
-                                left: 15.0,
-                                top: 5.0,
-                                bottom: 5.0,
-                                right: 15.0,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Settings(),
                               ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
-                                color: Colors.transparent,
+                            );
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(
+                                  left: 15.0,
+                                  top: 5.0,
+                                  bottom: 5.0,
+                                  right: 15.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  color: Colors.transparent,
+                                ),
+                                child: Icon(
+                                  Icons.settings,
+                                  size: 26.0,
+                                  color: creamLight,
+                                ),
                               ),
-                              child: Icon(
-                                Icons.settings,
-                                size: 26.0,
-                                color: creamLight,
-                              ),
-                            ),
-                            SizedBox(height: 5.0),
-                            Text("Settings", style: hSubtitleText),
-                          ],
+                              SizedBox(height: 5.0),
+                              Text("Settings", style: hSubtitleText),
+                            ],
+                          ),
                         ),
                       ],
                     ),
